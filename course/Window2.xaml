@@ -1,0 +1,22 @@
+﻿<Window x:Class="course.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:course"
+        xmlns:wpf = "clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        mc:Ignorable="d"
+        Title="Window2" Height="253.2" Width="440" Background="Black" Foreground="White">
+    <Grid x:Name="grid">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="5" Orientation="Vertical">
+
+                <TextBlock x:Name="nameRu" FontSize="16" Text="{Binding nameRu}" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                <TextBlock x:Name="slogan" FontSize="16" Text="{Binding slogan}" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                <TextBlock x:Name="description" FontSize="14" Text="{Binding description}" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+
+            </StackPanel>
+        </ScrollViewer>
+       
+    </Grid>
+</Window>

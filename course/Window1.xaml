@@ -1,0 +1,101 @@
+﻿<Window x:Class="course.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:course"
+        mc:Ignorable="d"
+        Title="Window1" Height="720" Width="1280">
+    <Window.Resources>
+        <Color x:Key="Color1">#FFE5B029</Color>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Margin="2" Orientation="Horizontal">
+                <Image Width="180" Height="230" Source="{Binding Path=posterUrlPreview}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1"/>
+                <StackPanel Margin="2">
+                    <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Path=nameRu}" HorizontalAlignment="Left" />
+                    <TextBlock FontSize="12"  Text="{Binding Path=AllGenres}" HorizontalAlignment="Left" />
+                    <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Path=rating}" HorizontalAlignment="Left" />
+                    <Button Content="" Click="Button_Like" Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15" BorderBrush="{x:Null}" Focusable="False" IsHitTestVisible="True" IsTabStop="True" AllowDrop="False">
+                        <Button.Background>
+                            <ImageBrush ImageSource="{Binding Path=picHolder}"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Смотреть похожие" Click="Button_Similar" Width="125" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15" BorderBrush="{x:Null}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Content="Подробнее" Click="Button_More" Width="125" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15" BorderBrush="{x:Null}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Background="Black">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="0*"></ColumnDefinition>
+            <ColumnDefinition Width="168*"/>
+            <ColumnDefinition  Width="387*"></ColumnDefinition>
+            <ColumnDefinition Width="82*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"></RowDefinition>
+            <RowDefinition Height="483*"></RowDefinition>
+            <RowDefinition Height="483*"></RowDefinition>
+            <RowDefinition Height="483*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="filmList" ItemTemplate="{StaticResource listTemplate}"  VirtualizingPanel.ScrollUnit="Pixel" 
+              Margin="11,43.6,4.6,62.4" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Background="Black" Foreground="White" BorderBrush="Black">
+
+        </ListBox>
+        <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="33" Margin="58,42.6,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212" SelectionBrush="#FFDC0F4C" Foreground="Black" BorderBrush="{x:Null}" Background="#FFFDFDFD" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
+        <Button Content="Поиск" Foreground="White" Background="#FFDC0F4C" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,190.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Click="Button_Click_1" Height="40" Grid.Column="1" Grid.RowSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Вперед" Grid.Column="2" HorizontalAlignment="Left" Margin="352,191.6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="Button_Click_2" Foreground="White" Background="#FFDC0F4C" Height="19">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Назад" Grid.Column="2" HorizontalAlignment="Left" Margin="190,191.6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="Button_Click_3" Background="#FFDC0F4C" Foreground="White" Height="19">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <ComboBox x:Name="genresCombo" HorizontalAlignment="Left" Margin="66,122.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="192" SelectionChanged="genresCombo_SelectionChanged" Height="34" Foreground="#FF080808" Background="Black" BorderBrush="#FF0B0B0B" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
+        <TextBlock x:Name="title" Grid.Column="2" HorizontalAlignment="Left" Margin="16,4.6,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="27" Width="612" Foreground="White" FontSize="20"/>
+        <Button Content="Мой список" Grid.Column="3" HorizontalAlignment="Left" Margin="39.4,22,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_4" Height="40" Foreground="White" Background="#FFDC0F4C" FontWeight="Bold" Grid.RowSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Топ 250" Foreground="White" Background="#FFDC0F4C" FontWeight="Bold" HorizontalAlignment="Left" Margin="105,46.6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100" Height="40" Click="Button_Click_5" Grid.Column="1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>
